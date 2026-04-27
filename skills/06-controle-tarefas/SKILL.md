@@ -1,57 +1,158 @@
 ---
 name: controle-tarefas
-description: Lista de tarefas em CSV com prazo, responsavel, prioridade e status. Lista o que vence hoje, o que esta atrasado e o que cada pessoa tem em aberto.
+description: Gerencia tarefas com prazo, prioridade, responsavel e projeto vinculado. Lista do dia, atrasadas, por pessoa e por projeto. Gera planejamento semanal automatico.
 allowed-tools: Read Grep Bash Edit Write
 user-invocable: true
 ---
 
 # Controle de Tarefas
 
-Voce mantem a lista de tarefas da equipe.
+Voce mantem o backlog operacional da equipe. Foco: nada importante cair no esquecimento, ninguem com sobrecarga invisivel.
 
 ## Arquivo
 
-**tarefas/tarefas.csv**
+### tarefas/tarefas.csv
 ```
 id,titulo,descricao,responsavel,prioridade,prazo,status,projeto,data_criacao,data_conclusao
-T0001,Atualizar landing page,Trocar copy da hero,Maria,alta,2026-02-01,em_andamento,Site,2026-01-20,
+```
+- `id`: `T0001`...
+- `prioridade`: `baixa`, `media`, `alta`, `urgente`
+- `status`: `pendente`, `em_andamento`, `bloqueada`, `concluida`, `cancelada`
+- `projeto`: opcional, vincula com `projetos.csv` (nome ou id)
+
+## Operacoes
+
+### 1. Criar tarefa
+
+1. Gera `id` sequencial
+2. **Exige responsavel** — sem isso, recusa: "Quem fica com essa tarefa?"
+3. **Exige prazo** — se nao informado, sugere baseado em prioridade:
+   - urgente: hoje ou ate amanha
+   - alta: ate 3 dias
+   - media: ate 7 dias
+   - baixa: 14+ dias
+4. `data_criacao` = hoje
+5. `status` default = `pendente`
+
+### 2. Mudar status
+
+Usuario: "Marca a T0042 como em andamento" / "Conclui a T0042" / "Bloqueia T0042"
+
+- `pendente → em_andamento`: registra que comecou
+- `em_andamento → concluida`: preenche `data_conclusao` = hoje
+- `qualquer → bloqueada`: **exige motivo** — adiciona em `descricao` com data
+- `qualquer → cancelada`: confirma com usuario antes
+
+### 3. Listar do dia
+
+```
+Hoje — 2026-02-15
+
+URGENTE (1):
+  ! T0027 — Cobrar Loja Estilo SP (Marcelo) — vence hoje
+
+ALTA (2):
+  > T0021 — Refazer foto SP-P (Pedro) — vence amanha
+  > T0024 — Conferir extrato Itau (Ana) — vence em 2 dias
+
+ATRASADAS (3):
+  ! T0015 — Atualizar tabela de medidas (Maria) — atrasada 5 dias
+  ! T0018 — Resp email novo cliente (Joana) — atrasada 3 dias
+  ! T0019 — Pedir orcamento Embalagens BR (Marcelo) — atrasada 1 dia
 ```
 
-## Status validos
-- `pendente`
-- `em_andamento`
-- `bloqueada`
-- `concluida`
-- `cancelada`
+### 4. Por pessoa
 
-## Prioridades
-- `baixa`
-- `media`
-- `alta`
-- `urgente`
+```
+Carga atual — Maria
 
-## O que voce faz
+Em andamento (2):
+  > T0015 — Atualizar tabela de medidas — vence 2026-02-10 (atrasada 5d)
+  > T0023 — Postar lancamento BH — vence 2026-02-20
 
-1. **Cria tarefa**: gera ID (T0001...) com data de criacao
-2. **Muda status**: pendente -> em_andamento -> concluida (registra data_conclusao)
-3. **Reatribui responsavel**
-4. **Reagenda prazo**
-5. **Lista hoje**: tarefas com prazo hoje
-6. **Lista atrasadas**: prazo passou e nao concluida
-7. **Lista por pessoa**: tudo em aberto de Maria
-8. **Lista por projeto**: tudo do projeto Site
-9. **Sumario diario**: hoje + atrasadas + bloqueadas
+Pendentes (4):
+  > T0028 — Responder pedido revenda — vence 2026-02-18 (alta)
+  > T0029 — Reagendar visita estudio — vence 2026-02-22 (media)
+  > T0031 — Atualizar bio Insta — vence 2026-02-25 (baixa)
+  > T0033 — Brainstorm Junina — vence 2026-03-01 (media)
 
-## Regras
+Total: 6 tarefas em aberto
+Risco: 1 atrasada — recomenda ajustar prazo OU repassar T0015
+```
 
-- Sempre defina responsavel — sem responsavel, recuse e pergunte
-- Tarefa urgente sempre aparece primeiro nas listagens
-- Quando concluir, sempre registre data_conclusao
-- Tarefas bloqueadas devem ter motivo na descricao
+### 5. Por projeto
 
-## Exemplos
+Filtra por `projeto`. Mostra todas em aberto + concluidas.
 
-- "Adiciona uma tarefa pra Maria atualizar a landing ate sexta, prioridade alta" → cria
-- "O que eu tenho pra fazer hoje?" → lista do responsavel = usuario
-- "Mostra tudo que esta atrasado" → filtra prazo < hoje e status != concluida
-- "Marca a T0001 como concluida"
+### 6. Atrasadas
+
+`prazo` < hoje E `status` not in (concluida, cancelada).
+
+Ordena por dias de atraso.
+
+### 7. Sugestao de redistribuicao
+
+Quando 1 pessoa tem > N tarefas urgentes/altas em aberto:
+
+```
+Atencao: Maria tem 5 tarefas urgentes/altas. 
+Sugestao:
+  - T0015 (atrasada 5d) pode ir pra Joana?
+  - T0029 (media) pode reagendar pra semana que vem?
+```
+
+### 8. Planejamento semanal
+
+Toda segunda, ao pedir "semana":
+
+```
+Semana de 16/02 a 22/02
+
+Por pessoa:
+  Maria   — 4 tarefas (carga normal)
+  Joana   — 2 tarefas (pode pegar mais)
+  Pedro   — 6 tarefas (sobrecarga, redistribuir 1?)
+  Marcelo — 3 tarefas
+  Ana     — 1 tarefa
+
+Bloqueadas (precisam acao):
+  ! T0011 — Aguardando aprovacao do contador (Marcelo)
+  ! T0017 — Aguardando resposta TecidoCo (Marcelo)
+```
+
+## Regras invioláveis
+
+| Regra | Por que |
+|---|---|
+| Sempre tem responsavel | Sem dono, ninguem faz |
+| Sempre tem prazo | Sem prazo, fica eterno |
+| Bloqueada exige motivo | Senao vira "cemiterio de tarefas" |
+| `id` nunca repete | Auditoria |
+| Concluida nunca volta a `pendente` | Se precisa, abre tarefa nova |
+
+## Erros comuns
+
+1. **Tarefa sem responsavel claro**: "todo mundo" significa "ninguem"
+2. **Prazo "indefinido"**: tarefa morre na lista
+3. **Bloqueada sem motivo**: ninguem sabe o que destrava
+4. **Concluir e nunca registrar `data_conclusao`**: relatorio de produtividade fica errado
+
+## Integracao
+
+- `controle-projetos`: tarefa pode ser uma etapa do projeto
+- `controle-clientes`: follow-up de cliente pode virar tarefa
+- `dashboard-rapido`: tarefas vencendo hoje, atrasadas, por responsavel
+- `relatorio-mensal`: numero de tarefas concluidas no mes, tempo medio de conclusao
+
+## Exemplos reais
+
+| Pedido | Acao |
+|---|---|
+| "Adiciona tarefa pra Pedro refazer foto SP-P ate sexta, alta" | Cria T000X |
+| "O que tenho pra hoje?" | Lista responsavel = usuario, prazo = hoje |
+| "O que ta atrasado?" | Lista prazo < hoje |
+| "Tarefas da Maria" | Filtra responsavel |
+| "Conclui T0021" | Muda status + data_conclusao |
+| "Bloqueia T0017, esperando o TecidoCo responder" | Muda + motivo |
+| "Como ta o projeto Junina?" | Filtra projeto Junina + mostra status das tarefas |
+| "Planejamento da semana" | Sumario por pessoa + alertas |
