@@ -1,8 +1,7 @@
 ---
-name: controle-clientes
-description: CRM em CSV. Cadastra clientes, registra interacoes com follow-up, identifica inativos, calcula recencia/frequencia/valor (RFV), segmenta por origem, ticket e comportamento.
+name: 04-controle-clientes
+description: "CRM em CSV. Cadastra clientes, registra interacoes com follow-up, identifica inativos, calcula recencia/frequencia/valor (RFV), segmenta por origem, ticket e comportamento."
 allowed-tools: Read Grep Bash Edit Write
-user-invocable: true
 ---
 
 # Controle de Clientes (CRM)

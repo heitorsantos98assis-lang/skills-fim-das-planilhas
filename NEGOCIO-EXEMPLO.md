@@ -34,11 +34,11 @@ Tempo total: 2h45.
 
 ### Dia 2 — Primeira venda registrada
 
-Maria (vendedora) vendeu 3 camisetas pra um cliente novo. Marcelo conversou com Claude:
+Maria (vendedora) vendeu 3 camisetas pra um cliente novo. Marcelo conversou com Codex:
 
 > Maria vendeu 3 camisetas Recife G pra um cliente novo: Carla Mendes, carla@email.com, 11 98888-1234. R$ 49,90 cada, recebeu no pix.
 
-Claude:
+Codex:
 1. Cadastrou Carla como cliente novo (C048)
 2. Registrou venda V0001 — 3 unidades de SKU REC-G — R$ 149,70 — vendedor Maria — pago via pix
 3. Baixou 3 unidades do estoque (de 22 para 19)
@@ -49,11 +49,11 @@ Marcelo: ok. Proxima venda.
 
 ### Dia 7 — Conta vencendo
 
-Marcelo abre Claude segunda de manha:
+Marcelo abre Codex segunda de manha:
 
 > dashboard
 
-Claude responde com painel completo. Destaque vermelho:
+Codex responde com painel completo. Destaque vermelho:
 
 ```
 🚨 ALERTAS
@@ -61,11 +61,11 @@ Claude responde com painel completo. Destaque vermelho:
   - 2 produtos abaixo do minimo: Floripa M (3/10), Salvador G (4/10)
 ```
 
-Marcelo paga a conta na hora. Volta no Claude:
+Marcelo paga a conta na hora. Volta no Codex:
 
 > Paguei a conta da TecidoCo agora, R$ 1.800 do meu pix.
 
-Claude marca como paga + registra saida no caixa.
+Codex marca como paga + registra saida no caixa.
 
 ### Dia 14 — Cliente sumindo
 
@@ -73,7 +73,7 @@ Marcelo, sexta de manha:
 
 > Quem nao compra ha mais de 60 dias?
 
-Claude lista 8 clientes. Marcelo escolhe 3 e manda WhatsApp manual oferecendo desconto no proximo pedido. 1 deles compra na quarta seguinte. **R$ 280 que ele nao teria sem o relatorio.**
+Codex lista 8 clientes. Marcelo escolhe 3 e manda WhatsApp manual oferecendo desconto no proximo pedido. 1 deles compra na quarta seguinte. **R$ 280 que ele nao teria sem o relatorio.**
 
 ### Dia 30 — Primeiro fechamento mensal
 
@@ -81,7 +81,7 @@ Marcelo, dia 1 do mes seguinte:
 
 > Fecha o mes anterior
 
-Claude gera `relatorios/relatorio-2026-01.md`:
+Codex gera `relatorios/relatorio-2026-01.md`:
 
 ```markdown
 # Relatorio mensal — Janeiro/2026
@@ -152,7 +152,7 @@ Marcelo le o relatorio em 5 minutos. Decisoes do mes:
 **Marcelo, segunda 9h:**
 > dashboard
 
-**Maria, durante o dia, no celular dela com Claude.ai:**
+**Maria, durante o dia, no celular dela com Codex.ai:**
 > Vendi 2 camisetas Recife G pra cliente Carla Mendes (ja existe), R$ 99,80 no pix.
 
 **Marcelo, sexta 17h:**
@@ -161,7 +161,7 @@ Marcelo le o relatorio em 5 minutos. Decisoes do mes:
 > Quem ta abaixo da meta esse mes?
 
 **Ana (financeiro), domingo 20h:**
-> Conferi extrato do Itau, bate com caixa.csv? (Claude le ambos e responde)
+> Conferi extrato do Itau, bate com caixa.csv? (Codex le ambos e responde)
 
 ### Coisa nova: producao de campanha
 
@@ -174,7 +174,7 @@ Toda semana, Marcelo pergunta:
 
 > Como ta a Campanha Dia das Maes?
 
-Claude responde com % de conclusao + atrasos + proxima etapa.
+Codex responde com % de conclusao + atrasos + proxima etapa.
 
 ---
 
@@ -184,7 +184,7 @@ Marcelo, no dia 1 de marco:
 
 > Compara fevereiro com janeiro. Faturamento, ticket medio, top produtos. O que mudou?
 
-Claude:
+Codex:
 
 ```
 Comparativo Fev x Jan/2026:
@@ -218,7 +218,7 @@ Decisao baseada em **5 minutos de leitura**, nao em achismo.
 
 ## O ganho real (medido)
 
-| Metrica | Antes (planilha) | Depois (Claude) |
+| Metrica | Antes (planilha) | Depois (Codex) |
 |---|---|---|
 | Tempo cadastrando dado/dia | 1h | 5 min |
 | Tempo no fechamento mensal | 4h | 30 min |
@@ -234,19 +234,19 @@ Decisao baseada em **5 minutos de leitura**, nao em achismo.
 
 ## Coisas que nao saem como o planejado (e como tratar)
 
-### "O Claude gravou venda errada"
-Voce digitou errado e Claude registrou. Solucao: `git diff` mostra o que mudou. Voce pede:
+### "O Codex gravou venda errada"
+Voce digitou errado e Codex registrou. Solucao: `git diff` mostra o que mudou. Voce pede:
 
 > Cancela a venda V0042, foi registrada errada — era 2 unidades, nao 3.
 
 Ou voce mesmo edita o CSV e confere com `git diff`.
 
 ### "Joana usou o nome errado do cliente"
-Claude criou cliente novo "Carla M." quando ja existia "Carla Mendes". Solucao:
+Codex criou cliente novo "Carla M." quando ja existia "Carla Mendes". Solucao:
 
 > Tem dois cadastros pra Carla? Funde eles, mantem o C048.
 
-Claude faz a fusao de cadastro + atualiza historico.
+Codex faz a fusao de cadastro + atualiza historico.
 
 ### "Esqueci de registrar 1 semana"
 Aconteceu. Voce volta:

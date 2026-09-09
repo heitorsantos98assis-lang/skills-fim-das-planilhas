@@ -1,8 +1,7 @@
 ---
-name: controle-tarefas
-description: Gerencia tarefas com prazo, prioridade, responsavel e projeto vinculado. Lista do dia, atrasadas, por pessoa e por projeto. Gera planejamento semanal automatico.
+name: 06-controle-tarefas
+description: "Gerencia tarefas com prazo, prioridade, responsavel e projeto vinculado. Lista do dia, atrasadas, por pessoa e por projeto. Gera planejamento semanal automatico."
 allowed-tools: Read Grep Bash Edit Write
-user-invocable: true
 ---
 
 # Controle de Tarefas

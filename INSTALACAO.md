@@ -2,8 +2,8 @@
 
 ## Pre-requisitos
 
-- **Claude Code instalado** ([guia oficial](https://docs.anthropic.com/claude/docs/claude-code)). Se ainda nao tem: `npm install -g @anthropic-ai/claude-code`
-- **Conta Claude com creditos** (plano Pro ou API)
+- **Codex instalado** ([guia oficial](https://developers.openai.com/codex)). Se ainda não tem: `npm install -g @openai/codex`
+- **Conta Codex com creditos** (plano Pro ou API)
 - **Git instalado** (vem padrao em Mac/Linux; Windows: instale [Git for Windows](https://git-scm.com/download/win))
 - **Pasta dedicada** pro seu negocio (vamos criar ja)
 
@@ -17,18 +17,18 @@ git init
 
 > **Por que Git?** Cada vez que voce roda uma operacao destrutiva (apagar linha, ajustar inventario), da pra voltar. Voce nunca mais vai perder dado por erro humano.
 
-## Passo 2 — Copie as skills pra `.claude/skills/` (2 min)
+## Passo 2 — Copie as skills pra `.codex/skills/` (2 min)
 
 ```bash
 # Dentro de ~/meu-negocio
-mkdir -p .claude/skills
-cp -r /caminho/onde/voce/clonou/skills-fim-das-planilhas/skills/* .claude/skills/
+mkdir -p .codex/skills
+cp -r /caminho/onde/voce/clonou/skills-fim-das-planilhas/skills/* .codex/skills/
 ```
 
 Verifica:
 
 ```bash
-ls .claude/skills/
+ls .codex/skills/
 # deve mostrar: 01-controle-financeiro  02-controle-estoque  ...  10-dashboard-rapido
 ```
 
@@ -44,7 +44,7 @@ Estrutura final:
 
 ```
 ~/meu-negocio/
-├── .claude/skills/...     (as 10 skills)
+├── .codex/skills/...     (as 10 skills)
 ├── financeiro/
 │   ├── caixa.csv
 │   ├── contas-a-pagar.csv
@@ -70,7 +70,7 @@ Estrutura final:
 ├── projetos/
 │   ├── projetos.csv
 │   └── etapas.csv
-└── relatorios/             (vazio — Claude vai gerar aqui)
+└── relatorios/             (vazio — Codex vai gerar aqui)
 ```
 
 ## Passo 4 — Limpe os dados de exemplo (3 min)
@@ -79,7 +79,7 @@ Os templates vem com 2-3 linhas exemplo. Antes de usar com seus dados, limpe (ma
 
 ```bash
 # Modo rapido pra limpar todos:
-for f in $(find . -name "*.csv" -not -path "./.claude/*"); do
+for f in $(find . -name "*.csv" -not -path "./.codex/*"); do
   head -1 "$f" > "$f.tmp" && mv "$f.tmp" "$f"
 done
 ```
@@ -100,23 +100,23 @@ git commit -m "estrutura inicial"
 
 Pronto, tem ponto de retorno.
 
-## Passo 6 — Abra Claude Code (30s)
+## Passo 6 — Abra Codex (30s)
 
 ```bash
-claude
+Codex
 ```
 
-Voce esta dentro do Claude Code, na pasta do seu negocio, com 10 skills disponiveis e 9 arquivos CSV vazios prontos pra receber dados.
+Voce esta dentro do Codex, na pasta do seu negocio, com 10 skills disponiveis e 9 arquivos CSV vazios prontos pra receber dados.
 
 ## Passo 7 — Teste com `dashboard` (1 min)
 
-Digite no Claude:
+Digite no Codex:
 
 > dashboard
 
 Deve responder com um painel com tudo zerado/vazio (porque ainda nao tem dados). Se respondeu, **funcionou**.
 
-Se deu erro, problema mais provavel: `.claude/skills/` nao foi copiada certa. Verifique.
+Se deu erro, problema mais provavel: `.codex/skills/` nao foi copiada certa. Verifique.
 
 ## Passo 8 — Cadastre 1 produto, 1 cliente, registre 1 venda (5 min)
 
@@ -141,8 +141,8 @@ A partir daqui, todo `git commit && git push` joga seu negocio pro GitHub. Catas
 
 | Sintoma | Causa | Solucao |
 |---|---|---|
-| Claude nao usa skills | `.claude/skills/` no lugar errado | Confira que esta na raiz da pasta do projeto |
-| Skill encontra arquivo errado | Nome de pasta diferente do template | Use exatamente `financeiro/caixa.csv` etc. ou avise o Claude do caminho diferente |
+| Codex nao usa skills | `.codex/skills/` no lugar errado | Confira que esta na raiz da pasta do projeto |
+| Skill encontra arquivo errado | Nome de pasta diferente do template | Use exatamente `financeiro/caixa.csv` etc. ou avise o Codex do caminho diferente |
 | Formato de data quebrado | Excel salvou em formato BR | Sempre `YYYY-MM-DD` no CSV. Se editar no Excel, salve como CSV UTF-8 |
 | Linha duplicada apos editar | Excel adicionou BOM | Edita no editor de texto puro (VS Code) ao inves de Excel |
 

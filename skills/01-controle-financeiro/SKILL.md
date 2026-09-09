@@ -1,8 +1,7 @@
 ---
-name: controle-financeiro
-description: Controla caixa, contas a pagar e contas a receber em arquivos CSV. Registra movimentacoes, calcula saldo, gera fluxo de caixa, alerta vencimentos e cruza com vendas/compras.
+name: 01-controle-financeiro
+description: "Controla caixa, contas a pagar e contas a receber em arquivos CSV. Registra movimentacoes, calcula saldo, gera fluxo de caixa, alerta vencimentos e cruza com vendas/compras."
 allowed-tools: Read Grep Bash Edit Write
-user-invocable: true
 ---
 
 # Controle Financeiro

@@ -1,8 +1,7 @@
 ---
-name: controle-vendas
-description: Registra vendas, calcula comissoes por regra de meta, acompanha metas mensais, gera rankings (vendedor, produto, cliente), forecast e analise de canais.
+name: 03-controle-vendas
+description: "Registra vendas, calcula comissoes por regra de meta, acompanha metas mensais, gera rankings (vendedor, produto, cliente), forecast e analise de canais."
 allowed-tools: Read Grep Bash Edit Write
-user-invocable: true
 ---
 
 # Controle de Vendas

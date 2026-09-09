@@ -1,8 +1,7 @@
 ---
-name: relatorio-mensal
-description: Gera fechamento mensal completo cruzando todas as outras skills. Compara com mes anterior, identifica tendencias, lista pontos de atencao e produz arquivo markdown reutilizavel.
+name: 09-relatorio-mensal
+description: "Gera fechamento mensal completo cruzando todas as outras skills. Compara com mes anterior, identifica tendencias, lista pontos de atencao e produz arquivo markdown reutilizavel."
 allowed-tools: Read Grep Bash Edit Write
-user-invocable: true
 ---
 
 # Relatorio Mensal

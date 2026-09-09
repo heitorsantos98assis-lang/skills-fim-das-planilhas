@@ -1,8 +1,7 @@
 ---
-name: controle-projetos
-description: Acompanha projetos com etapas, marcos, prazos planejados vs reais. Identifica atrasos, calcula % de conclusao, gera saude do portfolio e cruza com tarefas e clientes.
+name: 08-controle-projetos
+description: "Acompanha projetos com etapas, marcos, prazos planejados vs reais. Identifica atrasos, calcula % de conclusao, gera saude do portfolio e cruza com tarefas e clientes."
 allowed-tools: Read Grep Bash Edit Write
-user-invocable: true
 ---
 
 # Controle de Projetos

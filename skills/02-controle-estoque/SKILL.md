@@ -1,8 +1,7 @@
 ---
-name: controle-estoque
-description: Controla estoque em CSV. Registra entrada e saida, calcula saldo, alerta produtos abaixo do minimo, gera curva ABC, calcula valor em estoque e identifica giro lento.
+name: 02-controle-estoque
+description: "Controla estoque em CSV. Registra entrada e saida, calcula saldo, alerta produtos abaixo do minimo, gera curva ABC, calcula valor em estoque e identifica giro lento."
 allowed-tools: Read Grep Bash Edit Write
-user-invocable: true
 ---
 
 # Controle de Estoque

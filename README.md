@@ -2,7 +2,7 @@
 
 Pare de perder 10h/semana em planilha. Controle tudo com IA: organizacao, ZERO ERRO, velocidade real.
 
-> Esse pacote nao e teoria. Sao **10 skills do Claude Code prontas pra rodar**, **9 templates CSV** com dados de exemplo, **1 guia de instalacao** que voce roda em 15 minutos, **1 dia 1 estruturado** pra voce comecar usando ja, e **1 exemplo completo** mostrando uma loja ficticia rodando 3 meses inteiros com essas skills.
+> Esse pacote nao e teoria. Sao **10 skills do Codex prontas pra rodar**, **9 templates CSV** com dados de exemplo, **1 guia de instalacao** que voce roda em 15 minutos, **1 dia 1 estruturado** pra voce comecar usando ja, e **1 exemplo completo** mostrando uma loja ficticia rodando 3 meses inteiros com essas skills.
 
 ## A dor que voce conhece
 
@@ -18,7 +18,7 @@ A planilha foi util quando voce comecou. Hoje, ela e o teto do seu negocio.
 
 ## A proposta
 
-Em vez de planilha, voce conversa com o Claude. Ele:
+Em vez de planilha, voce conversa com o Codex. Ele:
 
 - **Le** os arquivos CSV do seu negocio (tudo em uma pasta organizada)
 - **Atualiza** quando voce avisa: "vendi 3 camisetas pretas P pro Joao por R$ 150, recebi no pix"
@@ -80,13 +80,13 @@ skills-fim-das-planilhas/
 2. **`PRIMEIRO-DIA.md`** — roteiro do que registrar no dia 1 pra sair do zero
 3. **`NEGOCIO-EXEMPLO.md`** — leia uma vez antes pra entender o ritmo
 
-Depois e so usar. Skills sao acionaveis por linguagem natural. Voce nao precisa decorar nome de skill — fala o que quer e o Claude usa a skill certa.
+Depois e so usar. Skills sao acionaveis por linguagem natural. Voce nao precisa decorar nome de skill — fala o que quer e o Codex usa a skill certa.
 
 ## O que esse pacote NAO faz
 
 - **Nao tem interface visual.** E texto + arquivos CSV. Se voce quer dashboard piscando, isso aqui nao e pra voce
 - **Nao tem multi-usuario com permissao.** Mais de 1 pessoa pode usar com Git, mas conflito se 2 editarem ao mesmo tempo
-- **Nao tem mobile app.** Roda onde Claude Code roda (Mac, Linux, Windows com WSL)
+- **Nao tem mobile app.** Roda onde Codex roda (Mac, Linux, Windows com WSL)
 - **Nao emite NF-e nem cumpre obrigacao fiscal.** Isso ainda precisa de ERP/contador
 - **Nao substitui banco.** E controle gerencial, nao conta corrente
 

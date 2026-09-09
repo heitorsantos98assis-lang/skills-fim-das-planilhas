@@ -1,8 +1,7 @@
 ---
-name: controle-funcionarios
-description: Cadastro de funcionarios, ponto, banco de horas, ferias e calculo gerencial de salario do mes. NAO e folha oficial, e gestao interna pre-folha.
+name: 07-controle-funcionarios
+description: "Cadastro de funcionarios, ponto, banco de horas, ferias e calculo gerencial de salario do mes. NAO e folha oficial, e gestao interna pre-folha."
 allowed-tools: Read Grep Bash Edit Write
-user-invocable: true
 ---
 
 # Controle de Funcionarios

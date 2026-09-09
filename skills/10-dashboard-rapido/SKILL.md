@@ -1,8 +1,7 @@
 ---
-name: dashboard-rapido
-description: Snapshot textual instantaneo do estado do negocio. Le todos os dados, monta painel em 1 mensagem com os indicadores que importam. Read-only. Resposta em ate 5 segundos.
+name: 10-dashboard-rapido
+description: "Snapshot textual instantaneo do estado do negocio. Le todos os dados, monta painel em 1 mensagem com os indicadores que importam. Read-only. Resposta em ate 5 segundos."
 allowed-tools: Read Grep Bash
-user-invocable: true
 ---
 
 # Dashboard Rapido

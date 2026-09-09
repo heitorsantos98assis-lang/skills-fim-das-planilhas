@@ -1,8 +1,7 @@
 ---
-name: controle-fornecedores
-description: Cadastra fornecedores, registra compras, compara precos historicos, calcula confiabilidade de prazo, alerta entregas pendentes e cruza com contas a pagar.
+name: 05-controle-fornecedores
+description: "Cadastra fornecedores, registra compras, compara precos historicos, calcula confiabilidade de prazo, alerta entregas pendentes e cruza com contas a pagar."
 allowed-tools: Read Grep Bash Edit Write
-user-invocable: true
 ---
 
 # Controle de Fornecedores
